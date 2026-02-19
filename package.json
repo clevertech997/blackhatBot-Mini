@@ -11,12 +11,12 @@
     },
     "keywords": [
         "whatsapp bot",
-        "Knight Bot Mini",
+        "black-hat Bot Mini",
         "bot",
         "baileys",
         "md"
     ],
-    "author": "Your Name",
+    "author": "black-hat",
     "license": "MIT",
     "dependencies": {
         "@bochilteam/scraper": "^5.0.1",
