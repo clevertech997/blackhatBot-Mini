@@ -71,7 +71,7 @@ module.exports = {
             name: 'cta_url',
             buttonParamsJson: JSON.stringify({
               display_text: 'Visit Bot Repo',
-              url: config.social?.github || 'https://github.com/clevertech997'
+              url: config.social?.github || 'https://github.com/clevertech997/blackhatBot-Mini'
             })
           },
           {
