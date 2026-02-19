@@ -44,126 +44,126 @@ module.exports = {
       const timeNow = new Date().toLocaleString();
 
       let menuText = `╭━━〔 ✨ ${config.botName} ✨ 〕━━⬣\n\n`;
-      menuText += `┃👤 User: @${extra.sender.split('@')[0]} ${isOwner ? "💎 PREMIUM" : ""}\n`;
-      menuText += `┃⚡ Prefix: ${config.prefix}\n`;
-      menuText += `┃📦 Total Commands: ${commands.size}\n`;
-      menuText += `┃⏳ Uptime: ${hours}h ${minutes}m ${seconds}s\n`;
-      menuText += `┃🧠 RAM Used: ${ramUsage} MB / ${totalRam} GB\n`;
-      menuText += `┃🖥️ Platform: ${os.platform()}\n`;
-      menuText += `┃🕒 Time: ${timeNow}\n`;
+      menuText += `👤 User: @${extra.sender.split('@')[0]} ${isOwner ? "💎 PREMIUM" : ""}\n`;
+      menuText += `⚡ Prefix: ${config.prefix}\n`;
+      menuText += `📦 Total Commands: ${commands.size}\n`;
+      menuText += `⏳ Uptime: ${hours}h ${minutes}m ${seconds}s\n`;
+      menuText += `🧠 RAM Used: ${ramUsage} MB / ${totalRam} GB\n`;
+      menuText += `🖥️ Platform: ${os.platform()}\n`;
+      menuText += `🕒 Time: ${timeNow}\n`;
       menuText += `╰━━━━━━━━━━━━━━━━━━━━━━━⬣\n\n`;
       
       // General Commands
       if (categories.general) {
-        menuText += `╭━━━━━━━━━━━━━━━━━━❍\n`;
+        menuText += `╭━━━━━━━━━━━━━━━━━❍\n`;
         menuText += `┃ 🧭 GENERAL COMMAND\n`;
-        menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
+        menuText += `╰━━━━━━━━━━━━━━━━━⬣\n`;
         categories.general.forEach(cmd => {
-          menuText += `│ 🧭 ${config.prefix}${cmd.name}\n`;
+          menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
       }
       
       // AI Commands
       if (categories.ai) {
-        menuText += `╭━━━━━━━━━━━━━━━━━━❍\n`;
+        menuText += `╭━━━━━━━━━━━━━━━━━❍\n`;
         menuText += `┃ 🤖 AI COMMAND\n`;
-        menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
+        menuText += `╰━━━━━━━━━━━━━━━━━⬣\n`;
         categories.ai.forEach(cmd => {
-          menuText += `│ 🤖 ${config.prefix}${cmd.name}\n`;
+          menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
       }
       
       // Group Commands
       if (categories.group) {
-        menuText += `╭━━━━━━━━━━━━━━━━━━❍\n`;
+        menuText += `╭━━━━━━━━━━━━━━━━━❍\n`;
         menuText += `┃ 🔵 GROUP COMMAND\n`;
-        menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
+        menuText += `╰━━━━━━━━━━━━━━━━━⬣\n`;
         categories.group.forEach(cmd => {
-          menuText += `│ 🔵 ${config.prefix}${cmd.name}\n`;
+          menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
       }
       
       // Admin Commands
       if (categories.admin) {
-        menuText += `╭━━━━━━━━━━━━━━━━━━❍\n`;
+        menuText += `╭━━━━━━━━━━━━━━━━━❍\n`;
         menuText += `┃ 🛡️ ADMIN COMMAND\n`;
-        menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
+        menuText += `╰━━━━━━━━━━━━━━━━━⬣\n`;
         categories.admin.forEach(cmd => {
-          menuText += `│ 🛡️ ${config.prefix}${cmd.name}\n`;
+          menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
       }
       
       // Owner Commands
       if (categories.owner) {
-        menuText += `╭━━━━━━━━━━━━━━━━━━❍\n`;
+        menuText += `╭━━━━━━━━━━━━━━━━━❍\n`;
         menuText += `┃ 👑 OWNER COMMAND\n`;
-        menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
+        menuText += `╰━━━━━━━━━━━━━━━━━⬣\n`;
         categories.owner.forEach(cmd => {
-          menuText += `│ 👑 ${config.prefix}${cmd.name}\n`;
+          menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
       }
       
       // Media Commands
       if (categories.media) {
-        menuText += `╭━━━━━━━━━━━━━━━━━━❍\n`;
+        menuText += `╭━━━━━━━━━━━━━━━━━❍\n`;
         menuText += `┃ 🎞️ MEDIA COMMAND\n`;
-        menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
+        menuText += `╰━━━━━━━━━━━━━━━━━⬣\n`;
         categories.media.forEach(cmd => {
-          menuText += `│ 🎞️ ${config.prefix}${cmd.name}\n`;
+          menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
       }
       
       // Fun Commands
       if (categories.fun) {
-        menuText += `╭━━━━━━━━━━━━━━━━━━❍\n`;
+        menuText += `╭━━━━━━━━━━━━━━━━━❍\n`;
         menuText += `┃ 🎭 FUN COMMAND\n`;
-        menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
+        menuText += `╰━━━━━━━━━━━━━━━━━⬣\n`;
         categories.fun.forEach(cmd => {
-          menuText += `│ 🎭 ${config.prefix}${cmd.name}\n`;
+          menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
       }
       
       // Utility Commands
       if (categories.utility) {
-        menuText += `╭━━━━━━━━━━━━━━━━━━❍\n`;
+        menuText += `╭━━━━━━━━━━━━━━━━━❍\n`;
         menuText += `┃ 🔧 UTILITY COMMAND\n`;
-        menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
+        menuText += `╰━━━━━━━━━━━━━━━━━⬣\n`;
         categories.utility.forEach(cmd => {
-          menuText += `│ 🔧 ${config.prefix}${cmd.name}\n`;
+          menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
       }
 
        // Anime Commands
        if (categories.anime) {
-        menuText += `╭━━━━━━━━━━━━━━━━━━❍\n`;
+        menuText += `╭━━━━━━━━━━━━━━━━━❍\n`;
         menuText += `┃ 👾 ANIME COMMAND\n`;
-        menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
+        menuText += `╰━━━━━━━━━━━━━━━━━⬣\n`;
         categories.anime.forEach(cmd => {
-          menuText += `│ 👾 ${config.prefix}${cmd.name}\n`;
+          menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
       }
 
        // Textmaker Commands
        if (categories.utility) {
-        menuText += `╭━━━━━━━━━━━━━━━━━━❍\n`;
+        menuText += `╭━━━━━━━━━━━━━━━━━❍\n`;
         menuText += `┃ 🖋️ TEXTMAKER COMMAND\n`;
-        menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
+        menuText += `╰━━━━━━━━━━━━━━━━━⬣\n`;
         categories.textmaker.forEach(cmd => {
-          menuText += `│ ✍️ ${config.prefix}${cmd.name}\n`;
+          menuText += `│ ➜ ${config.prefix}${cmd.name}\n`;
         });
         menuText += `\n`;
       }
       
-      menuText += `╰━━━━━━━━━━━━━━━━━━⬣\n\n`;
+      menuText += `╰━━━━━━━━━━━━━━━━━⬣\n\n`;
       menuText += `💡 Type ${config.prefix}help <command> for more info\n`;
       menuText += `🌟 Bot Version: 1.0.0\n`;
       
