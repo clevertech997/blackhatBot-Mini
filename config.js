@@ -19,10 +19,10 @@ module.exports = {
     packname: 'blackhat Bot Mini',
     
     // Bot Behavior
-    selfMode: false, // Private mode - only owner can use commands
+    selfMode: true, // Private mode - only owner can use commands
     autoRead: false,
-    autoTyping: false,
-    autoBio: false,
+    autoTyping: true,
+    autoBio: true,
     autoSticker: false,
     autoReact: false,
     autoReactMode: 'bot', // set bot or all via cmd
@@ -30,22 +30,22 @@ module.exports = {
     
     // Group Settings Defaults
     defaultGroupSettings: {
-      antilink: false,
+      antilink: true,
       antilinkAction: 'delete', // 'delete', 'kick', 'warn'
-      antitag: false,
+      antitag: true,
       antitagAction: 'delete',
       antiall: false, // Owner only - blocks all messages from non-admins
-      antiviewonce: false,
-      antibot: false,
-      anticall: false, // Anti-call feature
-      antigroupmention: false, // Anti-group mention feature
+      antiviewonce: true,
+      antibot: true,
+      anticall: true, // Anti-call feature
+      antigroupmention: true, // Anti-group mention feature
       antigroupmentionAction: 'delete', // 'delete', 'kick'
-      welcome: false,
+      welcome: true,
       welcomeMessage: '╭╼━≪•𝙽𝙴𝚆 𝙼𝙴𝙼𝙱𝙴𝚁•≫━╾╮\n┃𝚆𝙴𝙻𝙲𝙾𝙼𝙴: @user 👋\n┃Member count: #memberCount\n┃𝚃𝙸𝙼𝙴: time⏰\n╰━━━━━━━━━━━━━━━╯\n\n*@user* Welcome to *@group*! 🎉\n*Group 𝙳𝙴𝚂𝙲𝚁𝙸𝙿𝚃𝙸𝙾𝙽*\ngroupDesc\n\n> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ botName*',
       goodbye: false,
       goodbyeMessage: 'Goodbye @user 👋 We will never miss you!',
-      antiSpam: false,
-      antidelete: false,
+      antiSpam: true,
+      antidelete: true,
       nsfw: false,
       detect: false,
       chatbot: false,
@@ -57,7 +57,7 @@ module.exports = {
       // Add API keys here if needed
       openai: '',
       deepai: '',
-      remove_bg: ''
+      remove_bg: 'eRPnP6AifQza7LPcQ72wrXs3'
     },
     
     // Message Configuration
