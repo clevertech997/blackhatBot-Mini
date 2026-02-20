@@ -494,7 +494,7 @@ const APIs = {
   // Text to Speech API
   textToSpeech: async (text) => {
     try {
-      const apiUrl = `https://www.laurine.site/api/tts/tts-nova?text=${encodeURIComponent(text)}`;
+      const apiUrl = `https://js.puter.com/v2/?text=${encodeURIComponent(text)}`;
       const response = await axios.get(apiUrl, {
         timeout: 30000,
         headers: {
