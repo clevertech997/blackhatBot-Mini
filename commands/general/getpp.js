@@ -5,71 +5,64 @@ module.exports = {
   aliases: ['gp', 'getpic'],
   category: 'general',
   description: 'Get profile picture of a user',
-  usage: '.getpp (reply to message or tag user)',
+  usage: '.getpp (reply, tag, or number)',
   
   async execute(sock, msg, args, extra) {
     try {
       let targetUser = null;
-      
-      // Check if it's a reply
+
+      // 1️⃣ If reply, get the sender of the quoted message
       const quotedMessage = msg.message?.extendedTextMessage?.contextInfo?.quotedMessage;
       if (quotedMessage) {
-        // Get the participant who sent the quoted message
         targetUser = msg.message.extendedTextMessage.contextInfo.participant;
-      } else {
-        // Check if user is tagged
-        const mentionedJid = msg.message?.extendedTextMessage?.contextInfo?.mentionedJid;
-        if (mentionedJid && mentionedJid.length > 0) {
-          targetUser = mentionedJid[0];
-        } else {
-          // If no reply or tag, use the sender of current message
-          targetUser = extra.sender;
-        }
+      } 
+      // 2️⃣ If mention, get the first mentioned user
+      else if (msg.message?.extendedTextMessage?.contextInfo?.mentionedJid?.length > 0) {
+        targetUser = msg.message.extendedTextMessage.contextInfo.mentionedJid[0];
+      } 
+      // 3️⃣ If a number is passed as arguments
+      else if (args.length > 0) {
+        // join all args and remove all non-digit characters
+        const number = args.join('').replace(/\D/g, '');
+        if (number) targetUser = `${number}@s.whatsapp.net`;
+      } 
+      // 4️⃣ Default: sender
+      else {
+        targetUser = extra.sender;
       }
-      
+
       if (!targetUser) {
-        return extra.reply('❌ Could not identify target user. Please reply to a message or tag a user.');
+        return extra.reply('❌ Could not identify the target user. Reply, tag, or provide a number.');
       }
-      
+
       try {
-        // Try to get the profile picture
+        // Fetch profile picture URL
         const ppUrl = await sock.profilePictureUrl(targetUser, 'image');
-        
-        if (!ppUrl) {
-          return extra.reply('❌ Profile picture not found for this user.');
-        }
-        
-        // Download the profile picture
-        const response = await axios.get(ppUrl, { responseType: 'arraybuffer' });
+        if (!ppUrl) return extra.reply('❌ Profile picture not found.');
+
+        // Download picture
+        const response = await axios.get(ppUrl, { responseType: 'arraybuffer', timeout: 20000 });
         const buffer = Buffer.from(response.data);
-        
-        // Send the profile picture
-        await sock.sendMessage(extra.from, { 
+
+        // Send as reply
+        await sock.sendMessage(extra.from, {
           image: buffer,
           caption: `👤 Profile picture of @${targetUser.split('@')[0]}`,
           mentions: [targetUser]
         }, { quoted: msg });
-        
-      } catch (profileError) {
-        // Handle different types of errors
-        if (profileError.message?.includes('item-not-found') || 
-            profileError.output?.statusCode === 404 || 
-            profileError.output?.statusCode === 500 ||
-            profileError.message?.includes('not found')) {
-          return extra.reply('❌ Profile picture not found for this user.');
-        } else if (profileError.output?.statusCode === 401 || 
-                   profileError.message?.includes('forbidden') || 
-                   profileError.message?.includes('unauthorized')) {
-          return extra.reply('❌ Profile picture not found. The user\'s profile picture is private or not available.');
+
+      } catch (err) {
+        if (err.message?.includes('item-not-found') || err.message?.includes('not found')) {
+          return extra.reply('❌ Profile picture not found.');
+        } else if (err.message?.includes('forbidden') || err.message?.includes('unauthorized')) {
+          return extra.reply('❌ Profile picture is private or unavailable.');
         } else {
-          // Don't show error in console for normal cases, just inform user
-          return extra.reply('❌ Profile picture not found for this user.');
+          return extra.reply('❌ Could not fetch profile picture.');
         }
       }
-      
+
     } catch (error) {
-      // Don't show error in console, just inform user
-      extra.reply('❌ Profile picture not found for this user.');
+      return extra.reply('❌ Could not fetch profile picture due to an error.');
     }
   }
 };
