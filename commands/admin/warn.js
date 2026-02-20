@@ -28,7 +28,7 @@ module.exports = {
         return extra.reply('❌ Please mention or reply to the user to warn!\n\nExample: .warn @user Breaking rules');
       }
       
-      const reason = args.slice(mentioned.length > 0 ? 1 : 0).join(' ') || 'No reason specified';
+      const reason = args.slice(mentioned.length > 0 ? 1 : 0).join(' ') || 'No reason';
       
       // Cannot warn admins
       const foundParticipant = extra.groupMetadata.participants.find(
@@ -41,7 +41,7 @@ module.exports = {
       
       const warnings = database.addWarning(extra.from, target, reason);
       
-      let text = `⚠️ *USER WARNING*\n\n`;
+      let text = `*『 WARNING ALERT 』*\n\n`;
       text += `👤 User: @${target.split('@')[0]}\n`;
       text += `📝 Reason: ${reason}\n`;
       text += `⚠️ Warnings: ${warnings.count}/${config.maxWarnings}\n\n`;
@@ -59,7 +59,7 @@ module.exports = {
           database.clearWarnings(extra.from, target);
         }
       } else {
-        text += `⚠️ Next warning will result in removal!`;
+        text += `⚠️ Next warn will kick!`;
         
         await sock.sendMessage(extra.from, {
           text,
