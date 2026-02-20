@@ -48,7 +48,7 @@ Deploy a small helper to generate a **pair code** and obtain your session string
 
 <div align="center">
 
-<a href="blackhat-bot-pair-code.vercel.app/" target="_blank">
+<a href="https://blackhat-bot-pair-code.onrender.com" target="_blank">
   <img src="https://img.shields.io/badge/Generate-Pair%20Code-blueviolet?style=for-the-badge" alt="Generate Pair Code">
 </a>
 
@@ -57,7 +57,7 @@ Deploy a small helper to generate a **pair code** and obtain your session string
 After scanning, you will receive a **session string** starting with:
 
 ```text
-KblackhatBot!H4....
+blackhatBot!H4....
 ```
 
 Copy that full string and paste it into `config.js`:
